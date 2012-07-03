@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  *
  */
-class CityLink_Delivery_Zone
+class CityLinkDeliveryZone
 {
 	private static $_citylink_zone_postcodes = array(
 		// Scottish Highlands
@@ -51,7 +51,7 @@ class CityLink_Delivery_Zone
 			'BT',
 		),
 		// Repulic Ireland (no postcode system)
-		'5' => NULL,
+		'5' => array(),
 		// Isle of Man, Channel Islands, Guernsey, Alderney, Sark & Jersey
 		'6' => array(
 			'IM', 'GY', 'JE',
@@ -127,7 +127,7 @@ class CityLink_Delivery_Zone
 		 	{
 		 		// Format pattern and compare to postcode, return the current zone if match is found
 		 		$postcode_pattern = self::prepare_postcode($postcode_pattern);
-			 	if (substr($postcode, 0, count($postcode_pattern)) === $postcode_pattern)
+			 	if (substr($postcode, 0, strlen($postcode_pattern)) === $postcode_pattern)
 			 	{
 				 	return (int)$zone;
 			 	}
